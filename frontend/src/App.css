@@ -1,0 +1,129 @@
+:root {
+	--app-ink: #172a24;
+	--app-muted: #67756e;
+	--app-paper: #f4f5ef;
+	--app-surface: #ffffff;
+	--app-line: #dce3dc;
+	--app-accent: #bd4d35;
+	--app-accent-hover: #9d3c29;
+}
+
+#root {
+	width: 100%;
+	max-width: 1120px;
+	min-height: 100svh;
+	margin: 0 auto;
+	padding: 48px 28px 72px;
+	border: 0;
+	color: var(--app-ink);
+	background:
+		radial-gradient(ellipse at 90% 0%, rgba(202, 220, 199, 0.42), transparent 34%),
+		var(--app-paper);
+	text-align: left;
+}
+
+#root > div {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 0 18px;
+	width: min(100%, 880px);
+	margin: 0 auto;
+}
+
+#root h1 {
+	min-width: 0;
+	margin: 0;
+	padding: 24px 26px 12px;
+	border: 1px solid var(--app-line);
+	border-bottom: 0;
+	background: var(--app-surface);
+	color: var(--app-ink);
+	font-family: Georgia, 'Times New Roman', serif;
+	font-size: clamp(21px, 3vw, 30px);
+	font-weight: 500;
+	line-height: 1.2;
+	overflow-wrap: anywhere;
+	letter-spacing: 0;
+}
+
+#root h1:nth-of-type(1) {
+	border-radius: 8px 0 0;
+}
+
+#root h1:nth-of-type(2) {
+	border-radius: 0 8px 0 0;
+}
+
+#root button {
+	min-height: 44px;
+	padding: 10px 16px;
+	border: 1px solid var(--app-line);
+	border-top: 0;
+	background: var(--app-surface);
+	color: var(--app-accent);
+	font: 600 14px/1.2 var(--sans, sans-serif);
+	cursor: pointer;
+	transition: background-color 150ms ease, color 150ms ease;
+}
+
+#root button:nth-of-type(1) {
+	border-radius: 0 0 0 8px;
+}
+
+#root button:nth-of-type(2) {
+	border-radius: 0 0 8px;
+}
+
+#root button:hover {
+	background: var(--app-accent);
+	color: #fff;
+}
+
+#root button:focus-visible {
+	position: relative;
+	z-index: 1;
+	outline: 3px solid rgba(189, 77, 53, 0.35);
+	outline-offset: 2px;
+}
+
+#root > div > :nth-child(n + 5) {
+	grid-column: 1 / -1;
+}
+
+#root h2,
+#root h3 {
+	color: var(--app-ink);
+	font-family: Georgia, 'Times New Roman', serif;
+	letter-spacing: 0;
+}
+
+#root img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+	object-fit: cover;
+}
+
+#root a {
+	color: var(--app-accent);
+}
+
+@media (max-width: 600px) {
+	#root {
+		padding: 28px 16px 48px;
+	}
+
+	#root > div {
+		gap: 0 10px;
+	}
+
+	#root h1 {
+		padding: 18px 14px 10px;
+		font-size: 21px;
+	}
+
+	#root button {
+		padding-inline: 8px;
+		font-size: 12px;
+	}
+}
