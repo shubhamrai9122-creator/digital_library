@@ -2,27 +2,28 @@ import { useEffect, useState } from 'react'
 import ProductList from './ProductList';
 import './App.css'
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "https://digital-library-backend.onrender.com";
+
 function App() {
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(10);
+  const [products, setProducts] = useState([]);
 
-
-const [count,setCount]=useState(0);
-const [num,setNum]=useState(10);
-const [products,setProducts]=useState([]);
-
-
-
-useEffect(()=>{
-    async  function APIcall(){
+  useEffect(() => {
+    async function APIcall() {
       console.log("aman happy birthday..🎂");
-         let responce= await fetch("http://localhost:3000/api/products");
-           let data= await responce.json();
-           console.log(data);
-           setProducts(data);  //pay attention , data formate change
-     }
+      try {
+        let responce = await fetch(`${API_BASE_URL}/api/products`);
+        let data = await responce.json();
+        console.log(data);
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
+    }
 
-
-   APIcall();
-},[]);
+    APIcall();
+  }, []);
   return (
     <div>
 
